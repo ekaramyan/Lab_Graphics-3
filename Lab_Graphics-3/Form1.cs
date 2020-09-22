@@ -10,6 +10,7 @@ using System.IO;
 using System.Drawing.Drawing2D;
 namespace Laba_3_GR
 {
+    //4ВАРИАНТ
     public partial class Form1 : Form
     {
         // Объявляем объект "g" класса Graphics
