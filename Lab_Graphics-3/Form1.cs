@@ -78,7 +78,7 @@ namespace Laba_3_GR
                     sf.LineAlignment = StringAlignment.Far;
                     g.DrawString(sm[i], fn, Brushes.Blue,
                     new RectangleF(0, 0 + i * 30, pictureBox1.Size.Width - 20,
-                    pictureBox1.Size.Height - 20), sf);
+                    pictureBox1.Size.Height - 100), sf);
                     fn.Dispose();
                 }
                 // Отображение второй группы строк
