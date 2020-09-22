@@ -53,6 +53,7 @@ namespace Laba_3_GR
         // *************** Отображение строк текста *************
         private void ShowText_Click(object sender, EventArgs e)
         {
+            SetStyle(ControlStyles.ResizeRedraw, true);
             int k = 0;
             // Чтение строк из файла
             try
