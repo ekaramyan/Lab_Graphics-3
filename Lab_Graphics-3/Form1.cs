@@ -21,9 +21,7 @@ namespace Laba_3_GR
 "First line", "Second line", "Third line",
 "Fourth line", "Fifth line", "Sixth line",
 "Seventh line", "Eighth line", "Ninth line",
-"Tenth line", "Eleven line", "Twelve line",
-"Thirteenth line", "Fourteenth line",
-"Fifteenth line"};
+"Tenth line", "Eleven line"};
 
         public Form1()
         {
@@ -40,7 +38,7 @@ namespace Laba_3_GR
 
             foreach (string s in sm) { f.WriteLine(s); }
             f.Close();
-            MessageBox.Show("15 строк записано в файл !");
+            MessageBox.Show("11 строк записано в файл !");
         }
         // *************** Очистка файла и PictureBox **********
         private void ClearFile_Click(object sender, EventArgs e)
@@ -51,70 +49,73 @@ namespace Laba_3_GR
         }
 
         // *************** Отображение строк текста *************
-        private void ShowText_Click(object sender, EventArgs e)
+        private void ShowT_Click(object sender, EventArgs e)
         {
-            SetStyle(ControlStyles.ResizeRedraw, true);
             int k = 0;
-            // Чтение строк из файла
             try
             {
                 StreamReader f = new StreamReader(new FileStream(filename,
                 FileMode.Open, FileAccess.Read));
-                for (int i = 0; i < 15; i++) { sm[i] = f.ReadLine(); }
+                for (int i = 0; i < 11; i++) { sm[i] = f.ReadLine(); }
                 f.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
-            // **** Отображение строк разными шрифтами и выравниванием **
+
             pictureBox1.BackColor = Color.FromName("Azure");
             pictureBox1.Refresh();
-            for (int i = 0; i < 15; i++)
+
+            for (int i = 0; i < 11; i++)
             {
-                // Отображение первой группы строк
                 if ((i >= 0) && (i < 8))
                 {
-                    Font fn = new Font("Magneto", 18, FontStyle.Underline);
+                    Font fn = new Font("Magneto", 18, FontStyle.Bold);
                     StringFormat sf =
                     (StringFormat)StringFormat.GenericTypographic.Clone();
                     sf.Alignment = StringAlignment.Center;
                     sf.LineAlignment = StringAlignment.Far;
                     g.DrawString(sm[i], fn, Brushes.Blue,
-                    new RectangleF(0, 0 + i * 30, pictureBox1.Size.Width - 20,
-                    pictureBox1.Size.Height - 100), sf);
+                    new RectangleF(0, -130 + i * 20, pictureBox1.Size.Width - 20,
+                    pictureBox1.Size.Height - 20), sf);
                     fn.Dispose();
                 }
-                // Отображение второй группы строк
-                if ((i >= 9) && (i < 10))
+                if ((i >= 8) && (i < 10))
                 {
                     k = i - 9;
-                    Font fn = new Font("Perpetua", 24, FontStyle.Regular);
+                    Font fn = new Font("Perpetua", 24, FontStyle.Italic);
                     StringFormat sf =
                     (StringFormat)StringFormat.GenericTypographic.Clone();
                     sf.FormatFlags = StringFormatFlags.DirectionVertical;
                     sf.Alignment = StringAlignment.Near;
                     sf.LineAlignment = StringAlignment.Far;
                     g.DrawString(sm[i], fn, Brushes.Black,
-                    new RectangleF(0 + k * 24, 0, pictureBox1.Size.Width - 20,
+                    new RectangleF(0 + k * 26, 10, pictureBox1.Size.Width - 20,
                     pictureBox1.Size.Height - 20), sf);
                     fn.Dispose();
                 }
-                // Отображение третьей группы строк
-                if (i == 11)
+                if (i == 10)
                 {
-                    Font fn = new Font("Cambria", 144, FontStyle.Strikeout);
+                    Font fn = new Font("Cambria", 144, FontStyle.Regular);
                     StringFormat sf =
                     (StringFormat)StringFormat.GenericTypographic.Clone();
                     sf.Alignment = StringAlignment.Center;
+
                     sf.LineAlignment = StringAlignment.Near;
                     g.DrawString(sm[i], fn, Brushes.Green,
-                    new RectangleF(0, 0 + i * 24, pictureBox1.Size.Width - 20,
+                    new RectangleF(0, 0 + i * 5, pictureBox1.Size.Width - 20,
                     pictureBox1.Size.Height - 20), sf);
                     fn.Dispose();
                 }
             }
         }
-        private void Button4_Click_1(object sender, EventArgs e)
+
+            private void Button4_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show("Made by EdosDDos");
+        }
+
+        private void PictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
